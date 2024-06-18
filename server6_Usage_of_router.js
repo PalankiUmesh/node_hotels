@@ -16,6 +16,7 @@ app.use('/person', personRouters); // use the routers
 const menuRouter = require('./routes/MenuRoutes')
 app.use('/menu', menuRouter)
 
+// comment added
 app.listen(3000, () => {
     console.log("App is listiing at port 3000");
 })
