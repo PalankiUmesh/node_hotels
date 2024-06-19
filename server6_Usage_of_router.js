@@ -3,6 +3,7 @@ const app = express()
 const db = require('./db')
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
+require('dotenv').config();
 
 app.get('/', (req, res) => {
     console.log("Welcome");
@@ -17,6 +18,7 @@ const menuRouter = require('./routes/MenuRoutes')
 app.use('/menu', menuRouter)
 
 // Comment added for testing purpose
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
     console.log("App is listiing at port 3000");
 })
