@@ -4,17 +4,26 @@ const db = require('./db')
 const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 require('dotenv').config();
+const passport = require('./auth')
 
-app.get('/', (req, res) => {
-    console.log("Welcome");
-})
+// Middleware function
+const logRequest = (req, res, next) => {
+    console.log(`[${new Date().toLocaleString()}] Request made to : ${req.originalUrl}`);
+    next(); // move on to next phase
+}
+app.use(logRequest);  // use log globally
 
-// Import the perons route file
-const personRouters = require('./routes/peronsRoutes')
-app.use('/person', personRouters); // use the routers
 
-// Import Menu route file
-const menuRouter = require('./routes/MenuRoutes')
+app.use(passport.initialize());
+const localAuthMiddleware = passport.authenticate('local', {session : false});
+app.get('/',(req, res) => {  // to use logRequest personally to particular api we use ----  app.get('/', logRequest, () => {})
+    res.send("Welcome");
+}) 
+
+const personRouters = require('./routes/peronsRoutes')  // Import the perons route file
+app.use('/person', localAuthMiddleware, personRouters); // use the routers
+
+const menuRouter = require('./routes/MenuRoutes') // Import Menu route file
 app.use('/menu', menuRouter)
 
 // Comment added for testing purpose

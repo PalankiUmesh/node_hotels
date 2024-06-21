@@ -3,15 +3,15 @@ const router = express.Router()
 const MenuItem = require('./../models/MenuItem');
 
 // GET method to get the menu items from the database
-router.get('/', async (res, req) => {
+router.get('/', async (req, res) => {
     try {
-        const data =await MenuItem.find();
-        console.log('Menu fetched');
-        res.status(200).json(data)
+        const data = await MenuItem.find();
+        console.log('Data fetched')
+        res.status(200).json(data);
     }
     catch(err) {
         console.log(err)
-        res.status(500).json({Error: "Internal Server Error"})
+        res.status(500).json({Error : 'Internal Server error'});
     }
 })
 
