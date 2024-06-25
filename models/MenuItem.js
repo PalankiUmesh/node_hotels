@@ -1,4 +1,3 @@
-const { Password } = require('@mui/icons-material');
 const mongoose = require('mongoose');
 
 const menuItemSchema = new mongoose.Schema({

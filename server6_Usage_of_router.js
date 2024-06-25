@@ -16,7 +16,7 @@ app.use(logRequest);  // use log globally
 
 app.use(passport.initialize());
 const localAuthMiddleware = passport.authenticate('local', {session : false});
-app.get('/',(req, res) => {  // to use logRequest personally to particular api we use ----  app.get('/', logRequest, () => {})
+app.get('/', localAuthMiddleware, (req, res) => {  // to use logRequest personally to particular api we use ----  app.get('/', logRequest, () => {})
     res.send("Welcome");
 }) 
 
