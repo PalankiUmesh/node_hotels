@@ -21,7 +21,7 @@ app.get('/',(req, res) => {  // to use logRequest personally to particular api w
 }) 
 
 const personRouters = require('./routes/peronsRoutes')  // Import the perons route file
-app.use('/person', localAuthMiddleware, personRouters); // use the routers
+app.use('/person', personRouters); // use the routers
 
 const menuRouter = require('./routes/MenuRoutes') // Import Menu route file
 app.use('/menu', menuRouter)
