@@ -11,3 +11,6 @@ Steps to run this project
 1.	Run the following command in your terminal or cmd. npm init   
 2.	npm i express ---- this creates node modules in this project.
 3.	Create an .env file in the root directory, and declare the PORT number, DB_URL (mongodb url)  and JWT_SECRET.
+
+NOTE: 
+In this repository server6_Usage_of_router.js is main server file.. Remaining server files are just for practise.
